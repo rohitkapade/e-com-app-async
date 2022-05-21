@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+         #navbar {
+            width: 100%;
+            height: 150px;
+            background-color: black;
+            margin-top: -15px;
+            display: flex;
+            direction: rtl;
+            align-items: center;
+            
+        }
+
+        .pages {
+            height: 40px;
+            width: 120px;
+            margin-right: 4%;
+            color: white;
+            font: bolder;
+            font-size: 20px;
+            background-color: black;
+            cursor: pointer;
+        }
+
+        #signupbox {
+            height: 400px;
+            width: 25%;
+            border: 1px solid black;
+            margin-left: 38%;
+            margin-top: 100px;
+        }
+
+        .fi {
+            height: 40px;
+            width: 80%;
+            margin-left: 33px;
+            margin-top:37px;
+
+        }
+
+        #subbutton{
+            margin-top: 60px;
+            color: white;
+            background-color: black;
+        }
+
+        #heading {
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <button class="pages" onclick="homefunc()">Home</button>
+        <button class="pages" onclick="loginfunc()">Login</button>
+        <button class="pages" onclick="signupfunc()">Signup</button>
+    </div>
+    <div id="signupbox">
+         <h2 id="heading">Login</h2>
+        <form action="" id="formsubmit">
+      
+            <input type="mail" class="fi" placeholder="Enter Email id" id="MailId" value=""><br>
+            <input type="password" class="fi" placeholder="Enter Password" id="Password" value="">
+            <input type="submit" class="fi" id="subbutton" ;">
+        </form>
+</body>
+</html>
+<script>
+
+
+
+    function homefunc (){
+        window.location.href="index page e-comm.html"
+    }
+    
+    function loginfunc (){
+        window.location.href="loginpage.html"
+    }
+    
+    function signupfunc (){
+        window.location.href="signuppage.html"
+    }
+
+   let formSubmition = document.querySelector("#formsubmit");
+   formSubmition.addEventListener("submit", checkDetails)
+
+   function checkDetails(){
+       event.preventDefault();
+
+       var matchData =JSON.parse(localStorage.getItem("AccountInfo"))
+   
+       var loginData = {
+           mail : document.querySelector("#MailId").value,
+           password : document.querySelector("#Password").value
+       }
+
+        for  (var i=0; i<matchData.length; i++){
+
+
+            
+
+            if (loginData.mail=="" || loginData.password==""){
+             alert("Fill all the data")
+
+            }
+            else if (matchData[i].mail==loginData.mail && matchData[i].password==loginData.password ){
+                alert("Login Successful !!!")
+                break;
+                window.location.href="index page e-comm.html"
+                
+
+            } 
+            
+        }
+      
+    }
+
+
+    
+
+      
+   
+    
+    
+    
+    </script>
